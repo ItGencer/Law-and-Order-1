@@ -1,6 +1,9 @@
 import "./header.scss";
+import { useState } from "react";
 
 function Header() {
+  const [isMenuIconOpen, setIsMenuIconOpen] = useState(false);
+
   return (
     <div className="header">
       <div className="header__title">
@@ -13,23 +16,32 @@ function Header() {
           className="header__content__search"
         />
         <div className="header__content__navbar">
-          
- <input id="my-drawer-1" type="checkbox" className="drawer-toggle" />
-  <div className="drawer-content">
-    {/* Page content here */}
-    <label htmlFor="my-drawer-1" className="btn drawer-button">Open drawer</label>
-  </div>
-  <div className="drawer-side">
-    <label htmlFor="my-drawer-1" aria-label="close sidebar" className="drawer-overlay"></label>
-    <ul className="menu bg-base-200 min-h-full w-80 p-4">
-      {/* Sidebar content here */}
-      <li><a>Sidebar Item 1</a></li>
-      <li><a>Sidebar Item 2</a></li>
-    </ul>
-  </div>
-
-
-
+          <div
+            className={
+              isMenuIconOpen
+                ? "header__content__navbar__toggle__button open"
+                : "header__content__navbar__toggle__button"
+            }
+            onClick={() => setIsMenuIconOpen((isOpen) => !isOpen)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div className="header__content__navbar__side">
+            <ul
+              className={`header__content__navbar__side__menu${
+                isMenuIconOpen ? " is-open" : ""
+              }`}
+            >
+              <li>
+                <a>Sidebar Item 1</a>
+              </li>
+              <li>
+                <a>Sidebar Item 2</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

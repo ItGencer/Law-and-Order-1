@@ -9,16 +9,18 @@
   color: #1f2937;
   background: #fff;
   box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+  width: 100%;
 
   &__title {
     flex: 1;
 
     a {
-      padding: 0.5rem 0.75rem;
+      padding: 10px 5px;
       color: inherit;
-      font-size: 1.25rem;
+      font-size: 20px;
       font-weight: 700;
       text-decoration: none;
+      word-spacing: -0.5ch;
       border-radius: 0.5rem;
     }
 
@@ -33,102 +35,149 @@
     gap: 0.75rem;
 
     &__search {
-    width: 6rem;
-    padding: 0.5rem 0.75rem;
-    color: inherit;
-    font: inherit;
-    background: #fff;
-    border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
-    outline-offset: 2px;
-  }
-
-&__navbar {
-    .drawer-toggle {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      clip-path: inset(50%);
-    }
-
-    .drawer-button {
-      position: relative;
-      display: inline-flex;
-      width: 2.75rem;
-      height: 2.75rem;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      color: transparent;
-      font-size: 0;
-      cursor: pointer;
-      background: transparent;
-      border-radius: 9999px;
-
-      &:hover {
-      background: #f3f4f6;
-    }
-
-&::before {
-      width: 1.25rem;
-      height: 0.125rem;
-      content: "";
-      background: #1f2937;
-      box-shadow: 0 -0.375rem #1f2937, 0 0.375rem #1f2937;
-    }
-
-    }
-    
-    .drawer-side {
-      position: fixed;
-      inset: 0;
-      display: none;
-    }
-
-    .drawer-toggle:checked ~ .drawer-side {
-      display: block;
-    }
-
-    .drawer-overlay {
-      position: absolute;
-      inset: 0;
-      cursor: pointer;
-      background: rgb(0 0 0 / 40%);
-    }
-
-    .menu {
-          position: relative;
-    width: 65%;
-    height: 100%;
-    margin: 0;
-    padding: 1rem;
-    list-style: none;
-    background: #f3f4f6;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
-
-
-    }
-
-    .menu li + li {
-      margin-top: 0.25rem;
-    }
-
-    .menu a {
-      display: block;
-      padding: 0.75rem;
+      width: 125px;
+      padding: 10px 5px;
       color: inherit;
-      text-decoration: none;
+      background: #fff;
+      border: 1px solid #d1d5db;
       border-radius: 0.5rem;
+      outline-offset: 2px;
+      font-size: 15px;
     }
 
-    .menu a:hover {
-      background: #e5e7eb;
+    &__navbar {
+      &__toggle {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        clip-path: inset(50%);
+
+        &__button {
+          width: 40px;
+          height: 45px;
+          position: relative;
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg);
+          -webkit-transition: 0.5s ease-in-out;
+          -moz-transition: 0.5s ease-in-out;
+          -o-transition: 0.5s ease-in-out;
+          transition: 0.5s ease-in-out;
+          cursor: pointer;
+
+          & span {
+            display: block;
+            position: absolute;
+            height: 6px;
+            width: 100%;
+            background: #d3531a;
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: 0.25s ease-in-out;
+            -moz-transition: 0.25s ease-in-out;
+            -o-transition: 0.25s ease-in-out;
+            transition: 0.25s ease-in-out;
+
+            &:nth-child(1) {
+              top: 4px;
+              transform-origin: center;
+            }
+
+            &:nth-child(2) {
+              top: 17px;
+              transform-origin: center;
+            }
+
+            &:nth-child(3) {
+              top: 30px;
+              transform-origin: center;
+            }
+          }
+
+          &.open span {
+            &:nth-child(1) {
+              -webkit-transform: rotate(45deg);
+              -moz-transform: rotate(45deg);
+              -o-transform: rotate(45deg);
+              transform: rotate(45deg);
+              top: 17px;
+              left: 0;
+            }
+
+            &:nth-child(2) {
+              width: 0%;
+              opacity: 0;
+            }
+
+            &:nth-child(3) {
+              -webkit-transform: rotate(-45deg);
+              -moz-transform: rotate(-45deg);
+              -o-transform: rotate(-45deg);
+              transform: rotate(-45deg);
+              top: 17px;
+              left: 0;
+            }
+          }
+        }
+      }
+
+      &__side {
+        &__overlay {
+          position: absolute;
+          inset: 0;
+          cursor: pointer;
+          background: rgb(0 0 0 / 40%);
+        }
+
+        &__menu {
+          position: absolute;
+          width: 65%;
+          top: 15px;
+          left: 0;
+          height:100vh;
+          padding: 1rem;
+          transform: translateX(-100%);
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          list-style: none;
+          background: #f3f4f6;
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+          transition: transform 1s ease, opacity 0.3s ease, visibility 0.3s;
+
+          &.is-open {
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+          }
+
+          & li + li {
+            margin-top: 0.25rem;
+          }
+
+          & a {
+            display: block;
+            padding: 0.75rem;
+            color: inherit;
+            text-decoration: none;
+            border-radius: 0.5rem;
+
+            &:hover {
+              background: #e5e7eb;
+            }
+          }
+        }
+      }
     }
   }
-
-  }
-  
 }
